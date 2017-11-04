@@ -1,15 +1,28 @@
 package com.test.mi.testproject.git;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
+import com.test.mi.testproject.BaseActivity;
 import com.test.mi.testproject.R;
 
-public class TestGitActivity extends AppCompatActivity {
+public class TestGitActivity extends BaseActivity {
+
+
+    private TextView git_tv1;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_git);
+    protected int getLayoutId() {
+        return R.layout.activity_test_git;
+    }
+
+    @Override
+    protected void initView() {
+        git_tv1 = findViewById(R.id.git_tv1);
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }

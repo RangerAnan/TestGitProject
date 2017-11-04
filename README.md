@@ -1,2 +1,2 @@
 # TestGitProject
-## android as中关于git的一些使用方法
+## 关于git的一些使用方法

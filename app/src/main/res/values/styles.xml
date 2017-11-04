@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+
+    <style name="lv_default_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#ffffff</item>
+        <item name="android:cacheColorHint">#00000000</item>
+        <item name="android:listSelector">#00000000</item>
+        <item name="android:divider">#eeeeee</item>
+        <item name="android:dividerHeight">1px</item>
+    </style>
+
 </resources>

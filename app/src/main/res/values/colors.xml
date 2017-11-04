@@ -3,4 +3,43 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+
+    <color name="theme_press">#ee4900</color>
+    <color name="title">#ffffff</color>
+    <color name="tabhost">#f7f7f8</color>
+    <color name="bg_common">#f4f4f4</color>
+    <color name="cl_black">#000000</color>
+    <color name="cl_dialog">#fbfbfb</color>
+    <color name="cl_dialog_press">#d6d6d6</color>
+    <color name="cl_line_gray1">#adadad</color>
+    <color name="cl_line_gray2">#d9d9d9</color>
+    <color name="cl_line_gray3">#dddddd</color>
+    <color name="cl_line_gray4">#F3F3F7</color>
+    <color name="cl_gray0">#333333</color>
+    <color name="cl_gray1">#666666</color>
+    <color name="cl_gray2">#999999</color>
+    <color name="cl_gray3">#dfdfdf</color>
+    <color name="cl_item_press">#e5e6e7</color>
+    <color name="cl_public_menu">#353535</color>
+    <color name="orange_yellow">#fffdcf</color>
+    <color name="btn_orange1">#ff4e00</color>
+    <color name="btn_orange2">#ee4900</color>
+    <color name="btn_orange3">#d74200</color>
+    <color name="btn_white1">#ffffff</color>
+    <color name="btn_white2">#d8d8d8</color>
+    <color name="list_divider">#d9d9d9</color>
+    <color name="switch_gray">#aaaaaa</color>
+    <color name="edittext_box">#cdcdcd</color>
+    <color name="cl_orange">#ff3939</color>
+    <color name="edittext_normal">#777777</color>
+    <color name="edittext_focus">#ff4e00</color>
+    <color name="chat_face_grid_selector">#ebebeb</color>
+    <color name="chat_type_box">#959595</color>
+    <color name="bg_dropmenu_press">#dadada</color>
+    <color name="bg_dropmenu">#eeeeee</color>
+    <!-- ff8800 -->
+    <color name="bg_dropmenu_text">#3f3f3f</color>
+    <color name="font_tab">#636363</color>
 </resources>

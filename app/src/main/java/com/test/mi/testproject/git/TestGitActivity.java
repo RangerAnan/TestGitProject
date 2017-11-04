@@ -9,6 +9,7 @@ public class TestGitActivity extends BaseActivity {
 
 
     private TextView git_tv1;
+    private TextView git_tv2;
 
 
     @Override
@@ -19,6 +20,7 @@ public class TestGitActivity extends BaseActivity {
     @Override
     protected void initView() {
         git_tv1 = findViewById(R.id.git_tv1);
+        git_tv2 = findViewById(R.id.git_tv2);
     }
 
     @Override

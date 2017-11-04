@@ -15,4 +15,13 @@
         android:text="git"
         android:textSize="18sp" />
 
+
+    <TextView
+        android:id="@+id/git_tv2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="branch"
+        android:textSize="18sp" />
+
 </LinearLayout>

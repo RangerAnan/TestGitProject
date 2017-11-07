@@ -2,7 +2,7 @@ package com.test.mi.testproject.git;
 
 import android.widget.TextView;
 
-import com.test.mi.testproject.BaseActivity;
+import com.test.mi.testproject.base.BaseActivity;
 import com.test.mi.testproject.R;
 
 public class TestGitActivity extends BaseActivity {

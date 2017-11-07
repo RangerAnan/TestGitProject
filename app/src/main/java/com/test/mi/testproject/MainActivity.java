@@ -9,12 +9,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.test.mi.testproject.colormatrix.TestColorMatrixActivity;
 import com.test.mi.testproject.git.TestGitActivity;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
 
     private ListView listView;
-    private String[] item = {"TestGit"};
+    private String[] item = {"TestGit", "TestMatrix"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +41,16 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         Intent intent = new Intent();
-        if (position == 0) {
-            intent.setClass(MainActivity.this, TestGitActivity.class);
+        switch (position) {
+            case 0:
+                intent.setClass(MainActivity.this, TestGitActivity.class);
+                break;
+            case 1:
+                intent.setClass(MainActivity.this, TestColorMatrixActivity.class);
+                break;
+            default:
+                intent.setClass(MainActivity.this, MainActivity.class);
+                break;
         }
         startActivity(intent);
     }

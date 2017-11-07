@@ -1,4 +1,4 @@
-package com.test.mi.testproject;
+package com.test.mi.testproject.base;
 
 import android.content.Context;
 import android.os.Bundle;

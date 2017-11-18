@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".git.TestGitActivity" />
-        <activity android:name=".colormatrix.TestColorMatrixActivity"></activity>
+        <activity android:name=".colormatrix.TestColorMatrixActivity" />
+        <activity android:name=".listview.TestListViewActivty" />
     </application>
 
 </manifest>

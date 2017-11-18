@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    private Context mContext;
+    public Context mContext;
 
 
     @Override

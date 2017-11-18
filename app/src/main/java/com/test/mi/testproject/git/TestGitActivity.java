@@ -4,6 +4,9 @@ import android.widget.TextView;
 
 import com.test.mi.testproject.base.BaseActivity;
 import com.test.mi.testproject.R;
+import com.test.mi.testproject.domain.TestEvent;
+
+import de.greenrobot.event.EventBus;
 
 public class TestGitActivity extends BaseActivity {
 
@@ -26,5 +29,13 @@ public class TestGitActivity extends BaseActivity {
     @Override
     protected void initData() {
 
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        EventBus.getDefault().post(new TestEvent(0));
+        super.onDestroy();
+        EventBus.getDefault().post(new TestEvent(10));
     }
 }

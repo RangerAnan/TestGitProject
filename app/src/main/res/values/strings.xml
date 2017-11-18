@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TestProject</string>
+
+
+    <!-- 下拉刷新ListView -->
+    <string name="pull_to_refresh_pull_labele">下拉刷新</string>
+    <string name="pull_to_refresh_release_labele">释放立即刷新</string>
+    <string name="pull_to_refresh_refreshing_labele">正在刷新...</string>
+    <string name="pull_to_load_more">加载更多</string>
+    <string name="pull_to_loading_more">正在加载更多...</string>
+    <string name="pull_to_load_more_complete">没有数据了</string>
+    <string name="pull_to_refresh_last_time">最近更新:</string>
+    <string name="loading">全力加载中...</string>
+    <string name="click_to_refresh">网络不给力,点击屏幕刷新吧~</string>
 </resources>

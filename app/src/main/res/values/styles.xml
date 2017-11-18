@@ -20,4 +20,20 @@
         <item name="android:dividerHeight">1px</item>
     </style>
 
+
+    <style name="ProgressFooterLoading" parent="@android:style/Widget.ProgressBar.Large">
+        <item name="android:indeterminateDrawable">@drawable/progressbar_chat</item>
+        <item name="android:indeterminate">false</item>
+    </style>
+
+    <style name="smaller_text_gray" parent="@style/smaller_text">
+        <item name="android:textColor">@color/cl_gray2</item>
+    </style>
+
+    <style name="smaller_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

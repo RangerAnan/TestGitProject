@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.test.mi.testproject.colormatrix.TestColorMatrixActivity;
+import com.test.mi.testproject.database.TestDBActivity;
 import com.test.mi.testproject.domain.TestEvent;
 import com.test.mi.testproject.git.TestGitActivity;
 import com.test.mi.testproject.listview.TestListViewActivty;
@@ -20,7 +21,7 @@ import de.greenrobot.event.EventBus;
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
 
     private ListView listView;
-    private String[] item = {"TestGit", "TestMatrix", "TestListView", "refresh"};
+    private String[] item = {"TestGit", "TestMatrix", "TestListView", "TestSQLite"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                 break;
             case 2:
                 intent.setClass(MainActivity.this, TestListViewActivty.class);
+                break;
+            case 3:
+                intent.setClass(MainActivity.this, TestDBActivity.class);
                 break;
             default:
                 intent.setClass(MainActivity.this, MainActivity.class);

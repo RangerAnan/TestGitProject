@@ -9,14 +9,22 @@ import com.facebook.stetho.Stetho;
  * desc:
  */
 
-public class GloablApplication extends Application {
+public class GlobalApplication extends Application {
 
+    private static GlobalApplication context;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        context = this;
 
         Stetho.initializeWithDefaults(this);
 
+
+    }
+
+
+    public static GlobalApplication getContext() {
+        return context;
     }
 }

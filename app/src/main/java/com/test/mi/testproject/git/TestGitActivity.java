@@ -22,8 +22,8 @@ public class TestGitActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        git_tv1 = findViewById(R.id.git_tv1);
-        git_tv2 = findViewById(R.id.git_tv2);
+        git_tv1 = (TextView)findViewById(R.id.git_tv1);
+        git_tv2 = (TextView)findViewById(R.id.git_tv2);
     }
 
     @Override

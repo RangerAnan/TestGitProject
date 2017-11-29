@@ -41,8 +41,8 @@ public class TestListViewActivty extends BaseActivity implements OnRefreshListen
 
     @Override
     protected void initView() {
-        listView = findViewById(R.id.listView);
-        refreshLayout = findViewById(R.id.refreshLayout);
+        listView =  (ListView)findViewById(R.id.listView);
+        refreshLayout =  (SmartRefreshLayout)findViewById(R.id.refreshLayout);
 
         refreshLayout.setEnableOverScrollBounce(false);                                 //去掉回弹
         refreshLayout.setOnRefreshListener(this);

@@ -60,9 +60,9 @@ public class RefreshFooterView extends RelativeLayout implements RefreshFooter {
     private void initView(Context context) {
         this.context = context;
         View footer = LayoutInflater.from(context).inflate(R.layout.pull_to_refresh_footer, null, false);
-        mFooter = footer.findViewById(R.id.result_footer);
-        mFooterProgrssBar = footer.findViewById(R.id.pb_load_more);
-        mFooterText = footer.findViewById(R.id.tv_load_more);
+        mFooter = (LinearLayout)footer.findViewById(R.id.result_footer);
+        mFooterProgrssBar = (ProgressBar)footer.findViewById(R.id.pb_load_more);
+        mFooterText = (TextView)footer.findViewById(R.id.tv_load_more);
 
         addView(footer);
         setGravity(Gravity.CENTER);

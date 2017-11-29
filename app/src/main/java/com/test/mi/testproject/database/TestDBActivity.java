@@ -2,6 +2,7 @@ package com.test.mi.testproject.database;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.test.mi.testproject.R;
@@ -17,7 +18,7 @@ public class TestDBActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_db);
 
-        tv1 = findViewById(R.id.tv1);
+        tv1 = (TextView)findViewById(R.id.tv1);
 
         insertData();
         showSelectData();

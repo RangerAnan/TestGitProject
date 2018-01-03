@@ -16,13 +16,14 @@ import com.test.mi.testproject.domain.TestEvent;
 import com.test.mi.testproject.git.TestGitActivity;
 import com.test.mi.testproject.jsoup.TestJsoupActivity;
 import com.test.mi.testproject.listview.TestListViewActivty;
+import com.test.mi.testproject.thread.TestThreadActivity;
 
 import de.greenrobot.event.EventBus;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
 
     private ListView listView;
-    private String[] item = {"TestGit", "TestMatrix", "TestListView", "TestSQLite", "TestJsoup"};
+    private String[] item = {"TestGit", "TestMatrix", "TestListView", "TestSQLite", "TestJsoup", "TestGlide", "TestThread"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
 
     private void initView() {
-        listView = (ListView)findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listView);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, R.layout.lv_main_item, R.id.tv_main, item);
         listView.setAdapter(adapter);
 
@@ -65,6 +66,12 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                 break;
             case 4:
                 intent.setClass(MainActivity.this, TestJsoupActivity.class);
+                break;
+            case 5:
+                intent.setClass(MainActivity.this, TestJsoupActivity.class);
+                break;
+            case 6:
+                intent.setClass(MainActivity.this, TestThreadActivity.class);
                 break;
             default:
                 intent.setClass(MainActivity.this, MainActivity.class);

@@ -7,6 +7,6 @@ package com.test.mi.testproject.constant;
 
 public class ProConstant {
 
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 5;
     public static final String dbName = "testDB";
 }

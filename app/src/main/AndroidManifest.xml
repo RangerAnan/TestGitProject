@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.test.mi.testproject">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".GlobalApplication"
@@ -26,6 +26,7 @@
         <activity android:name=".listview.TestListViewActivty" />
         <activity android:name=".database.TestDBActivity" />
         <activity android:name=".jsoup.TestJsoupActivity" />
+        <activity android:name=".thread.TestThreadActivity"></activity>
     </application>
 
 </manifest>

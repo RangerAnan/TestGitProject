@@ -8,7 +8,6 @@
 
 
     <TextView
-        android:textSize="14sp"
         android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,5 +15,15 @@
         android:gravity="center"
         android:minHeight="40dp"
         android:padding="5sp"
-        android:text="test" />
+        android:text="test"
+        android:textSize="14sp" />
+
+
+    <TextView
+        android:id="@+id/importData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="导入数据"
+        android:textSize="18sp" />
 </LinearLayout>

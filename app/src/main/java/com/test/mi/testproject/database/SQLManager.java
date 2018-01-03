@@ -23,6 +23,7 @@ public class SQLManager {
     public static final String age = "age";
     public static final String sex = "sex";
     public static final String dateTime = "dateTime";
+    public static final String test = "test";
 
     public String createPersonTable() {
         return "create table " + personTableName + "("

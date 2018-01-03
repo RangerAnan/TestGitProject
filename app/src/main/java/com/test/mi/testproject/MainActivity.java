@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.test.mi.testproject.colormatrix.TestColorMatrixActivity;
 import com.test.mi.testproject.database.TestDBActivity;
+import com.test.mi.testproject.domain.StudentModel;
 import com.test.mi.testproject.domain.TestEvent;
 import com.test.mi.testproject.git.TestGitActivity;
 import com.test.mi.testproject.jsoup.TestJsoupActivity;
@@ -45,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     private void initData() {
         listView.setOnItemClickListener(this);
-
     }
 
     @Override
@@ -71,6 +71,11 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                 intent.setClass(MainActivity.this, TestJsoupActivity.class);
                 break;
             case 6:
+                StudentModel studentModel = new StudentModel();
+                studentModel.name = "张三";
+                studentModel.age = 18;
+                studentModel.isJoined = false;
+                intent.putExtra("data", studentModel);
                 intent.setClass(MainActivity.this, TestThreadActivity.class);
                 break;
             default:

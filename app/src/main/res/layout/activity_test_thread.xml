@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <TextView
@@ -12,5 +13,14 @@
         android:layout_height="40dp"
         android:layout_margin="20dp"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/thread_tv2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:text="aaaa"
+        android:textSize="20sp" />
+
 
 </LinearLayout>

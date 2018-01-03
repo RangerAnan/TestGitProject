@@ -46,7 +46,7 @@ public class WebViewActivity extends QsActivity<WebviewPresenter> {
 //        webView.loadUrl(url_load);
         Log.i(initTag(), "-------------");
         try {
-            InputStream inputStream = getAssets().open("collect_face_1513403855487.jpg");
+            InputStream inputStream = getAssets().open("collect_face.jpg");
             byte[] bytes = readStream(inputStream);
             String s = new String(bytes, "UTF-8");
 

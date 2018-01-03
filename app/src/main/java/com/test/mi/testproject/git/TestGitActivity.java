@@ -17,6 +17,7 @@ public class TestGitActivity extends BaseActivity {
 
     private TextView git_tv1;
     private TextView git_tv2;
+    private String threadName;
 
 
     @Override
@@ -43,7 +44,34 @@ public class TestGitActivity extends BaseActivity {
             e.printStackTrace();
         }
 
+        //
+        threadName = threadLocal.get() + "/";
+        thread.start();
+
     }
+
+
+    Thread thread = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            threadName += threadLocal.get();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    git_tv2.setText(threadName);
+                }
+            });
+        }
+    });
+
+
+    ThreadLocal<String> threadLocal = new ThreadLocal<String>() {
+        @Override
+        protected String initialValue() {
+            return Thread.currentThread().getName();
+        }
+    };
+
 
     @Override
     protected void onDestroy() {

@@ -18,13 +18,14 @@ import com.test.mi.testproject.git.TestGitActivity;
 import com.test.mi.testproject.jsoup.TestJsoupActivity;
 import com.test.mi.testproject.listview.TestListViewActivty;
 import com.test.mi.testproject.thread.TestThreadActivity;
+import com.test.mi.testproject.webview.WebViewActivity;
 
 import de.greenrobot.event.EventBus;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
 
     private ListView listView;
-    private String[] item = {"TestGit", "TestMatrix", "TestListView", "TestSQLite", "TestJsoup", "TestGlide", "TestThread"};
+    private String[] item = {"TestGit", "TestMatrix", "TestListView", "TestSQLite", "TestJsoup", "TestGlide", "TestThread", "TestWebView"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +73,15 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                 break;
             case 6:
                 StudentModel studentModel = new StudentModel();
+
                 studentModel.name = "张三";
                 studentModel.age = 18;
                 studentModel.isJoined = false;
                 intent.putExtra("data", studentModel);
                 intent.setClass(MainActivity.this, TestThreadActivity.class);
+                break;
+            case 7:
+                intent.setClass(MainActivity.this, WebViewActivity.class);
                 break;
             default:
                 intent.setClass(MainActivity.this, MainActivity.class);

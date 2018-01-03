@@ -43,7 +43,6 @@ public class TestGitActivity extends BaseActivity {
             e.printStackTrace();
         }
 
-
     }
 
     @Override

@@ -26,6 +26,7 @@
         <activity android:name=".listview.TestListViewActivty" />
         <activity android:name=".database.TestDBActivity" />
         <activity android:name=".jsoup.TestJsoupActivity" />
+        <activity android:name=".webview.WebViewActivity" />
         <activity android:name=".thread.TestThreadActivity"></activity>
     </application>
 

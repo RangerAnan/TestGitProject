@@ -10,7 +10,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.test.mi.testproject.colormatrix.TestColorMatrixActivity;
+import com.test.mi.testproject.constant.ARouterConstant;
 import com.test.mi.testproject.database.TestDBActivity;
 import com.test.mi.testproject.domain.StudentModel;
 import com.test.mi.testproject.domain.TestEvent;
@@ -51,6 +53,11 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        if (position == 0) {
+            ARouter.getInstance().build(ARouterConstant.TestGitActivity).navigation();
+            return;
+        }
+
         Intent intent = new Intent();
         switch (position) {
             case 0:

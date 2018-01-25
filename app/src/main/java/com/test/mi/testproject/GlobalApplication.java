@@ -1,5 +1,6 @@
 package com.test.mi.testproject;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.stetho.Stetho;
 import com.qsmaxmin.qsbase.QsApplication;
 import com.qsmaxmin.qsbase.common.http.HttpBuilder;
@@ -20,7 +21,7 @@ public class GlobalApplication extends QsApplication {
 
         Stetho.initializeWithDefaults(this);
 
-
+        ARouter.init(this);
     }
 
     @Override

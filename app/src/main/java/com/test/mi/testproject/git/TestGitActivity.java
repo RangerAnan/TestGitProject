@@ -1,14 +1,20 @@
 package com.test.mi.testproject.git;
 
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.test.mi.testproject.base.BaseActivity;
 import com.test.mi.testproject.R;
+import com.test.mi.testproject.constant.ARouterConstant;
 import com.test.mi.testproject.domain.TestEvent;
 
 import junit.framework.Test;
 
+import org.aspectj.runtime.internal.AroundClosure;
 import org.junit.rules.TestName;
 
 import java.text.ParseException;
@@ -19,7 +25,8 @@ import java.util.EnumSet;
 
 import de.greenrobot.event.EventBus;
 
-public class TestGitActivity extends BaseActivity {
+@Route(path = ARouterConstant.TestGitActivity)
+public class TestGitActivity extends BaseActivity implements OnClickListener {
 
 
     private TextView git_tv1;
@@ -70,6 +77,9 @@ public class TestGitActivity extends BaseActivity {
             Log.i(getTag(), testEnum.name());
         }
 
+        //set click
+        git_tv2.setOnClickListener(this);
+
     }
 
     ThreadLocal<String> threadLocal = new ThreadLocal<String>() {
@@ -99,5 +109,18 @@ public class TestGitActivity extends BaseActivity {
         EventBus.getDefault().post(new TestEvent(0));
         super.onDestroy();
         EventBus.getDefault().post(new TestEvent(10));
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.git_tv2:
+                ARouter.getInstance().build(ARouterConstant.TestListViewActivty)
+                        .withString("name", "张三").withInt("age", 28).withBoolean("sex", true).navigation();
+                break;
+            default:
+                break;
+
+        }
     }
 }

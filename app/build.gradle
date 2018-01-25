@@ -15,6 +15,13 @@ android {
         flavorDimensions "versionCode"
 
         multiDexEnabled true
+
+        //ARouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -48,4 +55,7 @@ dependencies {
     compile 'org.jsoup:jsoup:1.9.2'
 
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    compile 'com.alibaba:arouter-api:1.2.2'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.3'
 }

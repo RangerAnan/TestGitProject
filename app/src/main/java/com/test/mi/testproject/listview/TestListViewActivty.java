@@ -5,6 +5,9 @@ import android.support.annotation.NonNull;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreater;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreater;
@@ -18,6 +21,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.test.mi.testproject.R;
 import com.test.mi.testproject.base.BaseActivity;
+import com.test.mi.testproject.constant.ARouterConstant;
 
 import java.util.ArrayList;
 
@@ -26,6 +30,7 @@ import java.util.ArrayList;
  * desc:
  */
 
+@Route(path = ARouterConstant.TestListViewActivty)
 public class TestListViewActivty extends BaseActivity implements OnRefreshListener, OnRefreshLoadmoreListener {
 
     private ListView listView;
@@ -34,6 +39,13 @@ public class TestListViewActivty extends BaseActivity implements OnRefreshListen
     private int index = 0;
     private ArrayAdapter<String> adapter;
 
+    @Autowired
+    public String name;
+    @Autowired
+    public int age;
+    @Autowired
+    public boolean sex;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_test_smart_refresh;
@@ -41,8 +53,10 @@ public class TestListViewActivty extends BaseActivity implements OnRefreshListen
 
     @Override
     protected void initView() {
-        listView =  (ListView)findViewById(R.id.listView);
-        refreshLayout =  (SmartRefreshLayout)findViewById(R.id.refreshLayout);
+        listView = (ListView) findViewById(R.id.listView);
+        refreshLayout = (SmartRefreshLayout) findViewById(R.id.refreshLayout);
+
+        ARouter.getInstance().inject(this);
 
         refreshLayout.setEnableOverScrollBounce(false);                                 //去掉回弹
         refreshLayout.setOnRefreshListener(this);
@@ -83,6 +97,7 @@ public class TestListViewActivty extends BaseActivity implements OnRefreshListen
     @Override
     protected void initData() {
         ArrayList<String> itemList = getData();
+        itemList.set(0, "name:" + name + "/age:" + age + "/sex:" + sex);
         adapter = new ArrayAdapter<>(mContext, R.layout.lv_main_item, R.id.tv_main, itemList);
         listView.setAdapter(adapter);
     }

@@ -43,7 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     protected String getTag() {
-        return BaseActivity.class.getSimpleName();
+        return getClass().getSimpleName();
     }
 
 }

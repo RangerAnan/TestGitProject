@@ -40,6 +40,7 @@ public class TestThreadActivity extends QsActivity<ThreadPersenter> {
             @Override
             public Thread newThread(@NonNull Runnable runnable) {
                 Thread thread = new Thread(runnable);
+                //设置为守护线程
                 thread.setDaemon(true);
                 thread.setName("Thread--001");
                 return thread;
@@ -65,6 +66,7 @@ public class TestThreadActivity extends QsActivity<ThreadPersenter> {
                 }
             }
         }, 0, 1, TimeUnit.SECONDS);
+
     }
 
     private void getIntentData() {

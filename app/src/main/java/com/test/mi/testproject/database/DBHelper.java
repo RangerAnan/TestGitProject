@@ -31,21 +31,31 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.i("DBHelper", "oldVersion：" + oldVersion + "--newVersion:" + newVersion);
         if (oldVersion < newVersion) {
             try {
+                db.beginTransaction();
                 //update
                 addColumn(db);
+                db.setTransactionSuccessful();
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.i("DBHelper", "Version:" + db.getVersion() + "\n" + e);
+            } finally {
+                db.endTransaction();
             }
         }
     }
 
 
     private void addColumn(SQLiteDatabase db) throws InterruptedException {
-        Thread.sleep(10000);
-        for (int i = 400; i < 600; i++) {
+//        Thread.sleep(10000);
+        /*for (int i = 400; i < 600; i++) {
             String addColumnsSql = "ALTER TABLE  " + SQLManager.personTableName + "  ADD COLUMN " + SQLManager.test + i + " text   null;";
             Log.i("DBHelper", "addColumn " + i);
             db.execSQL(addColumnsSql);
-        }
+        }*/
+        String sql = "ALTER TABLE  " + SQLManager.personTableName + "  ADD COLUMN  CC" + " text   null;";
+        db.execSQL(sql);
+        int a = 1 / 0;
+        String addColumnsSql = "ALTER TABLE  " + SQLManager.personTableName + "  ADD COLUMN " + SQLManager.test + " text   null;";
+        db.execSQL(addColumnsSql);
+
     }
 }

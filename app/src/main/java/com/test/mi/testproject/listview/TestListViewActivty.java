@@ -1,13 +1,21 @@
 package com.test.mi.testproject.listview;
 
 import android.content.Context;
+import android.nfc.Tag;
 import android.support.annotation.NonNull;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.qsmaxmin.qsbase.mvp.fragment.QsRecyclerFragment;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreater;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreater;
@@ -61,6 +69,7 @@ public class TestListViewActivty extends BaseActivity implements OnRefreshListen
         refreshLayout.setEnableOverScrollBounce(false);                                 //去掉回弹
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setOnLoadmoreListener(this);
+        refreshLayout.setEnableLoadmore(false);
 
         refreshLayout.setDisableContentWhenRefresh(true);
         refreshLayout.setDisableContentWhenLoading(true);
@@ -97,20 +106,34 @@ public class TestListViewActivty extends BaseActivity implements OnRefreshListen
     @Override
     protected void initData() {
         ArrayList<String> itemList = getData();
-        itemList.set(0, "name:" + name + "/age:" + age + "/sex:" + sex);
+        itemList.add(0, "name:" + name + "/age:" + age + "/sex:" + sex);
         adapter = new ArrayAdapter<>(mContext, R.layout.lv_main_item, R.id.tv_main, itemList);
+
+        //add footer
+        EmptyView emptyView = new EmptyView(mContext);
+
+        listView.addFooterView(emptyView);
         listView.setAdapter(adapter);
+
+        //计算高度
+        int height = listView.getHeight();
+        int childCount = listView.getChildCount();
+
+        Log.i(getTag(), "height:" + height);
+        ListView.LayoutParams params = new ListView.LayoutParams(ListView.LayoutParams.MATCH_PARENT, 800);
+        emptyView.setGravity(Gravity.CENTER);
+        emptyView.setLayoutParams(params);
     }
 
     private ArrayList<String> getData() {
         ArrayList<String> itemList = new ArrayList<>();
-        for (int i = index; i < index + 10; i++) {
-            itemList.add("data  " + i);
-            if (i == index + 9) {
-                index = i;
-                break;
-            }
-        }
+//        for (int i = index; i < index + 10; i++) {
+//            itemList.add("data  " + i);
+//            if (i == index + 9) {
+//                index = i;
+//                break;
+//            }
+//        }
         return itemList;
     }
 
@@ -150,5 +173,27 @@ public class TestListViewActivty extends BaseActivity implements OnRefreshListen
 
     public SmartRefreshLayout getRefreshLayout() {
         return refreshLayout;
+    }
+
+
+    private int getListHeight(ListView listView) {
+
+        //对适配器的数据进行判空操作
+        if (adapter == null) {
+            return 0;
+        }
+
+        //设置ListView的底部高度
+        int totalHeight = 40;
+        //遍历适配器数据，获取到每一个item的高度并进行统计
+        for (int i = 0; i < adapter.getCount(); i++) {
+            View listItem = adapter.getView(i, null, listView);    //获取到ListView中item对应的view
+            listItem.measure(0, 0);                                //获取到view的高度
+            totalHeight += listItem.getMeasuredHeight();        //获取到所有item的总高度
+        }
+
+        //获取到总高度：item总高度+线条总高度（线条比item数少一个）
+        totalHeight = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1));
+        return totalHeight;
     }
 }

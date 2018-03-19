@@ -9,8 +9,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.test.mi.testproject.colormatrix.TestColorMatrixActivity;
 import com.test.mi.testproject.constant.ARouterConstant;
 import com.test.mi.testproject.database.TestDBActivity;
@@ -24,10 +27,11 @@ import com.test.mi.testproject.webview.WebViewActivity;
 
 import de.greenrobot.event.EventBus;
 
-public class MainActivity extends AppCompatActivity implements OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements OnItemClickListener, BottomNavigationBar.OnTabSelectedListener {
 
     private ListView listView;
     private String[] item = {"TestGit", "TestMatrix", "TestListView", "TestSQLite", "TestJsoup", "TestGlide", "TestThread", "TestWebView"};
+    private BottomNavigationBar bottom_navigation_bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,17 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, R.layout.lv_main_item, R.id.tv_main, item);
         listView.setAdapter(adapter);
 
+        //tab
+        bottom_navigation_bar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+        bottom_navigation_bar.addItem(new BottomNavigationItem(R.mipmap.ic_launcher_znt, "消息"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_zhu, "圈子"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_dan, "蛋场"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_yu, "渔场"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_tian, "我"))
+                .initialise();
+
+        bottom_navigation_bar.setTabSelectedListener(this);
+        bottom_navigation_bar.setMode(BottomNavigationBar.MODE_FIXED);
     }
 
 
@@ -106,5 +121,20 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onTabSelected(int position) {
+        Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onTabUnselected(int position) {
+
+    }
+
+    @Override
+    public void onTabReselected(int position) {
+
     }
 }

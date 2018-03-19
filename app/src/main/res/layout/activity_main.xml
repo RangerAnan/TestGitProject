@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:flexDirection="column_reverse">
+
+
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:id="@+id/bottom_navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+
+        <ListView
+            android:id="@+id/listView"
+            style="@style/lv_default_style"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ListView
-                    android:id="@+id/listView"
-                    style="@style/lv_default_style"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:divider="@color/colorAccent"
-                    android:fadingEdge="none"
-                    android:scrollbars="none" />
-            </LinearLayout>
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:divider="@color/colorAccent"
+            android:fadingEdge="none"
+            android:scrollbars="none" />
     </LinearLayout>
 
-</LinearLayout>
+</com.google.android.flexbox.FlexboxLayout>

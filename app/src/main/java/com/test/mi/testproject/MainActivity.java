@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         initView();
 
         initData();
+
+
     }
 
     private void initView() {

@@ -32,7 +32,7 @@ public class TestColorMatrixActivity extends BaseActivity implements View.OnClic
 
     @Override
     protected void initView() {
-        btn_switch_color = (Button)findViewById(R.id.btn_switch_color);
+        btn_switch_color = (Button) findViewById(R.id.btn_switch_color);
         iv_origin =  (ImageView)findViewById(R.id.iv_origin);
         iv_change =  (ImageView)findViewById(R.id.iv_change);
 

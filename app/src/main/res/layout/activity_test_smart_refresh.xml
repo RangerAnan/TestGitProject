@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:text="add item" />
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_add">
 
         <ListView
             android:id="@+id/listView"
@@ -17,7 +24,10 @@
             android:layout_height="match_parent"
             android:background="@color/cl_gray3"
             android:divider="@color/colorAccent"
-            android:dividerHeight="1px" />
+            android:dividerHeight="1px"
+            android:stackFromBottom="true"
+            android:transcriptMode="normal" />
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-</LinearLayout>
+
+</RelativeLayout>

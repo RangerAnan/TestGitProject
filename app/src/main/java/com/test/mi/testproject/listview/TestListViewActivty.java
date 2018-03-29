@@ -1,14 +1,17 @@
 package com.test.mi.testproject.listview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -29,6 +32,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.test.mi.testproject.R;
 import com.test.mi.testproject.base.BaseActivity;
+import com.test.mi.testproject.colormatrix.TestColorMatrixActivity;
 import com.test.mi.testproject.constant.ARouterConstant;
 
 import java.util.ArrayList;
@@ -39,7 +43,7 @@ import java.util.ArrayList;
  */
 
 @Route(path = ARouterConstant.TestListViewActivty)
-public class TestListViewActivty extends BaseActivity implements OnRefreshListener, OnRefreshLoadmoreListener {
+public class TestListViewActivty extends BaseActivity implements OnRefreshListener, OnRefreshLoadmoreListener, OnClickListener {
 
     private ListView listView;
     private SmartRefreshLayout refreshLayout;
@@ -54,6 +58,11 @@ public class TestListViewActivty extends BaseActivity implements OnRefreshListen
     @Autowired
     public boolean sex;
 
+    private ArrayList<String> itemListData = new ArrayList<>();
+    private Button btn_add;
+
+    private int preViewVisiblePosition = 0;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_test_smart_refresh;
@@ -63,8 +72,10 @@ public class TestListViewActivty extends BaseActivity implements OnRefreshListen
     protected void initView() {
         listView = (ListView) findViewById(R.id.listView);
         refreshLayout = (SmartRefreshLayout) findViewById(R.id.refreshLayout);
+        btn_add = (Button) findViewById(R.id.btn_add);
 
         ARouter.getInstance().inject(this);
+        btn_add.setOnClickListener(this);
 
         refreshLayout.setEnableOverScrollBounce(false);                                 //去掉回弹
         refreshLayout.setOnRefreshListener(this);
@@ -105,36 +116,20 @@ public class TestListViewActivty extends BaseActivity implements OnRefreshListen
 
     @Override
     protected void initData() {
-        ArrayList<String> itemList = getData();
-        itemList.add(0, "name:" + name + "/age:" + age + "/sex:" + sex);
-        adapter = new ArrayAdapter<>(mContext, R.layout.lv_main_item, R.id.tv_main, itemList);
+        itemListData.add(0, "name:" + name + "/age:" + age + "/sex:" + sex);
+        ArrayList<String> addData = addData(itemListData.size());
+        itemListData.addAll(addData);
+        adapter = new ArrayAdapter<>(mContext, R.layout.lv_main_item, R.id.tv_main, itemListData);
 
-        //add footer
-        EmptyView emptyView = new EmptyView(mContext);
-
-        listView.addFooterView(emptyView);
         listView.setAdapter(adapter);
-
-        //计算高度
-        int height = listView.getHeight();
-        int childCount = listView.getChildCount();
-
-        Log.i(getTag(), "height:" + height);
-        ListView.LayoutParams params = new ListView.LayoutParams(ListView.LayoutParams.MATCH_PARENT, 800);
-        emptyView.setGravity(Gravity.CENTER);
-        emptyView.setLayoutParams(params);
     }
 
-    private ArrayList<String> getData() {
-        ArrayList<String> itemList = new ArrayList<>();
-//        for (int i = index; i < index + 10; i++) {
-//            itemList.add("data  " + i);
-//            if (i == index + 9) {
-//                index = i;
-//                break;
-//            }
-//        }
-        return itemList;
+    private ArrayList<String> addData(int size) {
+        ArrayList<String> itemListData = new ArrayList<>();
+        for (int i = 1; i < 8; i++) {
+            itemListData.add("data " + (i + size));
+        }
+        return itemListData;
     }
 
     @Override
@@ -159,12 +154,24 @@ public class TestListViewActivty extends BaseActivity implements OnRefreshListen
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        ArrayList<String> addData = addData(itemListData.size());
+                        preViewVisiblePosition = addData.size();
+                        itemListData.addAll(0, addData);
+                        adapter.notifyDataSetChanged();
+
                         if (getRefreshLayout().isRefreshing()) {
                             getRefreshLayout().finishRefresh();
                         }
                         if (getRefreshLayout().isLoading()) {
                             getRefreshLayout().finishLoadmore();
                         }
+
+                        //定位到为刷新之前的item位置
+                        View childAt = listView.getChildAt(preViewVisiblePosition);
+//                        int top = childAt.getTop();
+//                        Log.i(getTag(), "--top:" + top + "---firstVisiblePosition:" + preViewVisiblePosition);
+//                        listView.setSelectionFromTop((preViewVisiblePosition - 1), 100);
+
                     }
                 });
             }
@@ -176,24 +183,14 @@ public class TestListViewActivty extends BaseActivity implements OnRefreshListen
     }
 
 
-    private int getListHeight(ListView listView) {
-
-        //对适配器的数据进行判空操作
-        if (adapter == null) {
-            return 0;
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_add:
+                listView.setSelection(preViewVisiblePosition - 1);
+                break;
+            default:
+                break;
         }
-
-        //设置ListView的底部高度
-        int totalHeight = 40;
-        //遍历适配器数据，获取到每一个item的高度并进行统计
-        for (int i = 0; i < adapter.getCount(); i++) {
-            View listItem = adapter.getView(i, null, listView);    //获取到ListView中item对应的view
-            listItem.measure(0, 0);                                //获取到view的高度
-            totalHeight += listItem.getMeasuredHeight();        //获取到所有item的总高度
-        }
-
-        //获取到总高度：item总高度+线条总高度（线条比item数少一个）
-        totalHeight = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1));
-        return totalHeight;
     }
 }

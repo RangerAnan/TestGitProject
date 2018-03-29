@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppThemeNotTranslucent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +29,10 @@
         <activity android:name=".database.TestDBActivity" />
         <activity android:name=".jsoup.TestJsoupActivity" />
         <activity android:name=".webview.WebViewActivity" />
-        <activity android:name=".thread.TestThreadActivity"></activity>
+        <activity android:name=".thread.TestThreadActivity" />
+        <activity android:name=".scroll.VPJoinListViewActivity" />
+        <activity android:name=".scroll.viewpager.TestViewPagerActivity" />
+        <activity android:name=".recycleView.RecycleItemActivity"></activity>
     </application>
 
 </manifest>

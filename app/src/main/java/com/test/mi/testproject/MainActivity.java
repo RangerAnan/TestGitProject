@@ -22,6 +22,9 @@ import com.test.mi.testproject.domain.TestEvent;
 import com.test.mi.testproject.git.TestGitActivity;
 import com.test.mi.testproject.jsoup.TestJsoupActivity;
 import com.test.mi.testproject.listview.TestListViewActivty;
+import com.test.mi.testproject.recycleView.RecycleItemActivity;
+import com.test.mi.testproject.scroll.VPJoinListViewActivity;
+import com.test.mi.testproject.scroll.viewpager.TestViewPagerActivity;
 import com.test.mi.testproject.thread.TestThreadActivity;
 import com.test.mi.testproject.webview.WebViewActivity;
 
@@ -30,7 +33,8 @@ import de.greenrobot.event.EventBus;
 public class MainActivity extends AppCompatActivity implements OnItemClickListener, BottomNavigationBar.OnTabSelectedListener {
 
     private ListView listView;
-    private String[] item = {"TestGit", "TestMatrix", "TestListView", "TestSQLite", "TestJsoup", "TestGlide", "TestThread", "TestWebView"};
+    private String[] item = {"TestGit", "TestMatrix", "TestListView", "TestSQLite", "TestJsoup", "TestGlide", "TestThread", "TestWebView", "lv嵌套vp",
+            "TestVP", "RecycleItem"};
     private BottomNavigationBar bottom_navigation_bar;
 
     @Override
@@ -106,6 +110,15 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                 break;
             case 7:
                 intent.setClass(MainActivity.this, WebViewActivity.class);
+                break;
+            case 8:
+                intent.setClass(MainActivity.this, VPJoinListViewActivity.class);
+                break;
+            case 9:
+                intent.setClass(MainActivity.this, TestViewPagerActivity.class);
+                break;
+            case 10:
+                intent.setClass(MainActivity.this, RecycleItemActivity.class);
                 break;
             default:
                 intent.setClass(MainActivity.this, MainActivity.class);

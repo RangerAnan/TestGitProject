@@ -4,5 +4,6 @@
     <item name="listView" type="id" />
     <item name="viewpager" type="id" />
     <item name="tvTitle" type="id" />
+    <item name="tvContent" type="id" />
     <item name="recycleView" type="id" />
 </resources>

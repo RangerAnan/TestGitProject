@@ -129,7 +129,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     public void onEventMainThread(TestEvent event) {
         Log.i("onEventMainThread", "---LoginMsgEvent--event.type:" + event.type);
-
     }
 
     @Override

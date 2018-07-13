@@ -17,6 +17,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.test.mi.testproject.colormatrix.TestColorMatrixActivity;
 import com.test.mi.testproject.constant.ARouterConstant;
 import com.test.mi.testproject.database.TestDBActivity;
+import com.test.mi.testproject.defineview.DefineViewActivity;
 import com.test.mi.testproject.domain.StudentModel;
 import com.test.mi.testproject.domain.TestEvent;
 import com.test.mi.testproject.git.TestGitActivity;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     private ListView listView;
     private String[] item = {"TestGit", "TestMatrix", "TestListView", "TestSQLite", "TestJsoup", "TestGlide", "TestThread", "TestWebView", "lv嵌套vp",
-            "TestVP", "RecycleItem"};
+            "TestVP", "RecycleItem", "defineView","toolBar"};
     private BottomNavigationBar bottom_navigation_bar;
 
     @Override
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
         bottom_navigation_bar.setTabSelectedListener(this);
         bottom_navigation_bar.setMode(BottomNavigationBar.MODE_FIXED);
+        bottom_navigation_bar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
     }
 
 
@@ -119,6 +121,12 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                 break;
             case 10:
                 intent.setClass(MainActivity.this, RecycleItemActivity.class);
+                break;
+            case 11:
+                intent.setClass(MainActivity.this, DefineViewActivity.class);
+                break;
+            case 12:
+                intent.setClass(MainActivity.this, TestActivity.class);
                 break;
             default:
                 intent.setClass(MainActivity.this, MainActivity.class);

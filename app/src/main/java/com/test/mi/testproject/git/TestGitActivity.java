@@ -1,8 +1,10 @@
 package com.test.mi.testproject.git;
 
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -29,10 +31,28 @@ import de.greenrobot.event.EventBus;
 public class TestGitActivity extends BaseActivity implements OnClickListener {
 
 
+    ThreadLocal<String> threadLocal = new ThreadLocal<String>() {
+        @Override
+        protected String initialValue() {
+            return Thread.currentThread().getName();
+        }
+    };
     private TextView git_tv1;
     private TextView git_tv2;
+    private LinearLayout containerView;
     private String threadName;
-
+    Thread thread = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            threadName += threadLocal.get();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    git_tv2.setText(threadName);
+                }
+            });
+        }
+    });
 
     @Override
     protected int getLayoutId() {
@@ -43,6 +63,11 @@ public class TestGitActivity extends BaseActivity implements OnClickListener {
     protected void initView() {
         git_tv1 = (TextView) findViewById(R.id.git_tv1);
         git_tv2 = (TextView) findViewById(R.id.git_tv2);
+        containerView = (LinearLayout) findViewById(R.id.containerView);
+
+        //添加view
+        View inflate = LayoutInflater.from(mContext).inflate(R.layout.view_title, null,false);
+        containerView.addView(inflate);
     }
 
     @Override
@@ -81,28 +106,6 @@ public class TestGitActivity extends BaseActivity implements OnClickListener {
         git_tv2.setOnClickListener(this);
 
     }
-
-    ThreadLocal<String> threadLocal = new ThreadLocal<String>() {
-        @Override
-        protected String initialValue() {
-            return Thread.currentThread().getName();
-        }
-    };
-
-
-    Thread thread = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            threadName += threadLocal.get();
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    git_tv2.setText(threadName);
-                }
-            });
-        }
-    });
-
 
     @Override
     protected void onDestroy() {

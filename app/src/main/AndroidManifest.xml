@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.test.mi.testproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -7,6 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        tools:replace="android:name"
         android:name=".GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -32,7 +34,9 @@
         <activity android:name=".thread.TestThreadActivity" />
         <activity android:name=".scroll.VPJoinListViewActivity" />
         <activity android:name=".scroll.viewpager.TestViewPagerActivity" />
-        <activity android:name=".recycleView.RecycleItemActivity"></activity>
+        <activity android:name=".recycleView.RecycleItemActivity" />
+        <activity android:name=".defineview.DefineViewActivity" />
+        <activity android:name=".TestActivity" />
     </application>
 
 </manifest>

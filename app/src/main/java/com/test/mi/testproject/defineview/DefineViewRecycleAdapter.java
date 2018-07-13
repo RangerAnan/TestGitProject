@@ -1,4 +1,4 @@
-package com.test.mi.testproject.recycleView;
+package com.test.mi.testproject.defineview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,28 +12,27 @@ import com.test.mi.testproject.recycleView.model.Performer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * Created by fcl on 18.3.29
  * desc:
  */
 
-public class MyRecycleAdapter extends RecyclerView.Adapter {
+public class DefineViewRecycleAdapter extends RecyclerView.Adapter {
 
-    public List<Performer> listData = new ArrayList<>();
+    public List<DefineViewModel> listData = new ArrayList<>();
     Context context;
 
     private OnItemClickListener listener;
 
-    public MyRecycleAdapter(List<Performer> listData, Context context) {
+    public DefineViewRecycleAdapter(List<DefineViewModel> listData, Context context) {
         this.listData = listData;
         this.context = context;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == 10) {
+        if (viewType == DefineViewModel.VIEW_TYPE_TWO) {
             View view = LayoutInflater.from(context).inflate(R.layout.recycle_item_test, parent, false);
             MyRecyclerViewHolder viewHolder = new MyRecyclerViewHolder(view);
             return viewHolder;
@@ -44,22 +43,22 @@ public class MyRecycleAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
-        final Performer performer = listData.get(position);
+        final DefineViewModel model = listData.get(position);
 
         if (holder instanceof MyRecyclerViewHolder) {
             MyRecyclerViewHolder viewHolder = (MyRecyclerViewHolder) holder;
-            viewHolder.textView.setText(performer.getName());
+            viewHolder.textView.setText(model.getTitle());
             //设置点击事件
             if (listener != null) {
                 viewHolder.textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        listener.onItemClick(position, performer, listData.size());
+                        listener.onItemClick(position, model, listData.size());
                     }
                 });
             }
         } else if (holder instanceof PerformTypeViewHolder) {
-            ((PerformTypeViewHolder) holder).bindData(performer);
+            ((PerformTypeViewHolder) holder).bindData(model);
         }
 
 
@@ -67,7 +66,7 @@ public class MyRecycleAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int position) {
-        return listData.get(position).getItemType();
+        return listData.get(position).getViewType();
     }
 
     @Override
@@ -95,8 +94,8 @@ public class MyRecycleAdapter extends RecyclerView.Adapter {
             itemView.setTag(true);
         }
 
-        public void bindData(Performer performer) {
-            textView.setText(performer.getName());
+        public void bindData(DefineViewModel performer) {
+            textView.setText(performer.getTitle());
         }
     }
 
@@ -105,6 +104,6 @@ public class MyRecycleAdapter extends RecyclerView.Adapter {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int position, Performer performer, int size);
+        void onItemClick(int position, DefineViewModel model, int size);
     }
 }
